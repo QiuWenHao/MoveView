@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  MoveView
+//
+//  Created by wenHao Qiu on 2017/7/25.
+//  Copyright © 2017年 fahai. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "UIView+Extension.h"
+
+#import "CZAdditions.h"
+
+#endif /* PrefixHeader_pch */
