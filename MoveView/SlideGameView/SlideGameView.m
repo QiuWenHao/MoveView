@@ -157,7 +157,7 @@
     CGPoint currentP = [touch locationInView:self];
     
     //以前的point
-    CGPoint preP = [touch previousLocationInView:self];
+    CGPoint preP = [touch previousLocationInView:self.superview];
     
     //x轴偏移的量
     CGFloat offsetX = currentP.x - preP.x;
@@ -311,7 +311,7 @@
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
         
-        dispatch_source_set_timer(timer,dispatch_walltime(NULL, 0),.1*NSEC_PER_SEC, 0); //每0.秒执行一次
+        dispatch_source_set_timer(timer,dispatch_walltime(NULL, 0),.1*NSEC_PER_SEC, 0); //每0.1秒执行一次
         
         dispatch_source_set_event_handler(timer, ^{
          
@@ -419,7 +419,7 @@
 #pragma mark - 碰到view或者边缘结束游戏
     if ((CGRectIntersectsRect(_touchView.frame, self.animationView.frame) && !self.animationView.isFlashing) || (CGRectIntersectsRect(_touchView.frame, self.animationView1.frame) && !self.animationView1.isFlashing) || (CGRectIntersectsRect(_touchView.frame, self.animationView2.frame) && !self.animationView2.isFlashing) || (CGRectIntersectsRect(_touchView.frame, self.animationView3.frame) && !self.animationView3.isFlashing) || CGRectIntersectsRect(_touchView.frame, topEdge) || CGRectIntersectsRect(_touchView.frame, bottomEdge) || CGRectIntersectsRect(_touchView.frame, leftEdge) || CGRectIntersectsRect(_touchView.frame, rightEdge)) {
         
-        AudioServicesDisposeSystemSoundID(_soundId);
+        //AudioServicesDisposeSystemSoundID(_soundId);
         
         if (self.delegate && [self.delegate respondsToSelector:@selector(gameIsOver)]) {
             
